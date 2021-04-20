@@ -3,7 +3,7 @@ output "id" {
   value       = local.out_id
 }
 
-output "out_tags" {
+output "tags" {
   description = "Tag object"
   value       = local.out_tags
 }
