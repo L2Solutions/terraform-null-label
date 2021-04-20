@@ -11,7 +11,10 @@ locals {
 }
 
 locals {
-  tags = merge(
+  out_id        = local.id
+  out_delimiter = local.delimiter
+
+  out_tags = merge(
     local.tags,
     {
       Namespace   = local.namespace

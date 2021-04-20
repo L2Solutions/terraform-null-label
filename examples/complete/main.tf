@@ -1,5 +1,5 @@
 # Shortest possible.
-module "ts-dev" {
+module "ts-dev-labels" {
   source = "../../"
 
   namespace = "ts"
@@ -7,7 +7,7 @@ module "ts-dev" {
 }
 
 # Longest possible. _ delimiter
-module "testl-stage-stage" {
+module "testl-stage-stage-labels" {
   source = "../../"
 
   namespace = "testl"
@@ -27,12 +27,12 @@ data "aws_iam_policy_document" "test-policy" {
   }
 }
 
-resource "aws_iam_policty" "ts-dev" {
-  name_prefix = module.ts-dev.id
+resource "aws_iam_policty" "testl-stage-stage" {
+  name_prefix = module.ts-dev-labels.id
   policy      = data.aws_iam_policy_document.test-policy
 }
 
 resource "aws_iam_policty" "ts-dev" {
-  name_prefix = module.testl-stage-stage.id
+  name_prefix = module.testl-stage-stage-labels.id
   policy      = data.aws_iam_policy_document.test-policy
 }
