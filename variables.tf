@@ -1,51 +1,51 @@
 variable "namespace" {
   description = "Primary classification label"
-  type        = "string"
+  type        = string
 
   validation {
     condition     = length(var.namespace) > 1 && length(var.namespace) < 6
-    error_message = "`namespace` must be two to five(2-5) characters in length."
+    error_message = "Variable `namespace` must be two to five(2-5) characters in length."
   }
 
   validation {
     condition     = can(regex("^[a-zA-Z0-9]+$", var.namespace))
-    error_message = "`namespace` may contain only alpha-numeric chraracters."
+    error_message = "Variable `namespace` may contain only alpha-numeric chraracters."
   }
 }
 
 variable "env" {
   description = "Secondary classification label"
-  type        = "string"
+  type        = string
 
   validation {
-    condition     = contains(["prd", "stg", "dev", "tst"], var.env)
-    error_message = "`env` must be one of \"prd\", \"stg\", \"dev\", \"tst\""
+    condition     = contains(["prod", "stage", "dev", "test"], var.env)
+    error_message = "Variable `env` must be one of \"prod\", \"stage\", \"dev\", \"test\"."
   }
 }
 
 variable "stage" {
   description = "Tertiary classification label"
-  type        = "string"
+  type        = string
   default     = ""
 
   validation {
-    condition     = length(var.stage) == 0 || contains(["prd", "stg", "dev", "tst"], var.stage)
-    error_message = "`stage` must be one of \"prd\", \"stg\", \"dev\", \"tst\" if set"
+    condition     = length(var.stage) == 0 || contains(["prod", "stage", "dev", "test"], var.stage)
+    error_message = "Variable `stage` must be one of \"prod\", \"stage\", \"dev\", \"test\" if set."
   }
 }
 
 variable "delimiter" {
   description = "ID Delimiter"
-  type        = "string"
+  type        = string
   default     = "-"
 
   validation {
     condition     = contains(["-", "_"], var.delimiter)
-    error_message = "`delimiter` must be either \"-\" or \"_\""
+    error_message = "Variable `delimiter` must be either \"-\" or \"_\"."
   }
 }
 
 variable "tags" {
-  type    = "object"
+  type    = map
   default = {}
 }
