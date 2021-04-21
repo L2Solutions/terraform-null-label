@@ -7,7 +7,7 @@ locals {
 }
 
 locals {
-  id = lower(join(compact([local.namespace, local.env, local.stage]), local.delimiter))
+  id = lower(join(local.delimiter, compact([local.namespace, local.env, local.stage])))
 }
 
 locals {
