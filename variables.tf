@@ -13,24 +13,29 @@ variable "namespace" {
   }
 }
 
-variable "env" {
+variable "name" {
   description = "Secondary classification label"
+  type        = string
+  default     = ""
+
+  validation {
+    condition     = length(var.name) == 0 || (length(var.name) > 1 && length(var.name) < 6)
+    error_message = "Variable `name` must be two to five(2-5) characters in length if set."
+  }
+
+  validation {
+    condition     = can(regex("^[a-zA-Z0-9]*$", var.name))
+    error_message = "Variable `name` may contain only alpha-numeric chraracters."
+  }
+}
+
+variable "env" {
+  description = "Tertiary classification label"
   type        = string
 
   validation {
     condition     = contains(["prod", "stage", "dev", "test"], var.env)
     error_message = "Variable `env` must be one of \"prod\", \"stage\", \"dev\", \"test\"."
-  }
-}
-
-variable "stage" {
-  description = "Tertiary classification label"
-  type        = string
-  default     = ""
-
-  validation {
-    condition     = length(var.stage) == 0 || contains(["prod", "stage", "dev", "test"], var.stage)
-    error_message = "Variable `stage` must be one of \"prod\", \"stage\", \"dev\", \"test\" if set."
   }
 }
 
@@ -46,6 +51,6 @@ variable "delimiter" {
 }
 
 variable "tags" {
-  type    = map
+  type    = map(any)
   default = {}
 }

@@ -6,7 +6,9 @@
 
 ## Requirements
 
-No requirements.
+| Name                                                                     | Version  |
+| ------------------------------------------------------------------------ | -------- |
+| <a name="requirement_terraform"></a> [terraform](#requirement_terraform) | >= 1.0.0 |
 
 ## Providers
 
@@ -22,13 +24,13 @@ No resources.
 
 ## Inputs
 
-| Name                                                         | Description                    | Type     | Default | Required |
-| ------------------------------------------------------------ | ------------------------------ | -------- | ------- | :------: |
-| <a name="input_delimiter"></a> [delimiter](#input_delimiter) | ID Delimiter                   | `string` | `"-"`   |    no    |
-| <a name="input_env"></a> [env](#input_env)                   | Secondary classification label | `string` | n/a     |   yes    |
-| <a name="input_namespace"></a> [namespace](#input_namespace) | Primary classification label   | `string` | n/a     |   yes    |
-| <a name="input_stage"></a> [stage](#input_stage)             | Tertiary classification label  | `string` | `""`    |    no    |
-| <a name="input_tags"></a> [tags](#input_tags)                | n/a                            | `map`    | `{}`    |    no    |
+| Name                                                         | Description                    | Type       | Default | Required |
+| ------------------------------------------------------------ | ------------------------------ | ---------- | ------- | :------: |
+| <a name="input_delimiter"></a> [delimiter](#input_delimiter) | ID Delimiter                   | `string`   | `"-"`   |    no    |
+| <a name="input_env"></a> [env](#input_env)                   | Tertiary classification label  | `string`   | n/a     |   yes    |
+| <a name="input_name"></a> [name](#input_name)                | Secondary classification label | `string`   | `""`    |    no    |
+| <a name="input_namespace"></a> [namespace](#input_namespace) | Primary classification label   | `string`   | n/a     |   yes    |
+| <a name="input_tags"></a> [tags](#input_tags)                | n/a                            | `map(any)` | `{}`    |    no    |
 
 ## Outputs
 
