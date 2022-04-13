@@ -1,3 +1,7 @@
+provider "aws" {
+  region = "us-east-2"
+}
+
 # Shortest possible.
 module "ts-dev-labels" {
   source = "../../"
@@ -10,9 +14,9 @@ module "ts-dev-labels" {
 module "testl-stage-stage-labels" {
   source = "../../"
 
-  namespace = "testl"
-  env       = "stage"
-  stage     = "stage"
+  namespace = "test"
+  name      = "lbls"
+  env       = "prod"
   delimiter = "_"
 }
 
@@ -27,12 +31,12 @@ data "aws_iam_policy_document" "test-policy" {
   }
 }
 
-resource "aws_iam_policty" "testl-stage-stage" {
+resource "aws_iam_policy" "testl-stage-stage" {
   name_prefix = module.ts-dev-labels.id
-  policy      = data.aws_iam_policy_document.test-policy
+  policy      = data.aws_iam_policy_document.test-policy.json
 }
 
-resource "aws_iam_policty" "ts-dev" {
+resource "aws_iam_policy" "ts-dev" {
   name_prefix = module.testl-stage-stage-labels.id
-  policy      = data.aws_iam_policy_document.test-policy
+  policy      = data.aws_iam_policy_document.test-policy.json
 }

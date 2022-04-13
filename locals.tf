@@ -1,13 +1,13 @@
 locals {
   namespace = lower(var.namespace)
+  name      = lower(var.name)
   env       = lower(var.env)
-  stage     = lower(var.stage)
   delimiter = lower(var.delimiter)
   tags      = var.tags
 }
 
 locals {
-  id = lower(join(local.delimiter, compact([local.namespace, local.env, local.stage])))
+  id = lower(join(local.delimiter, compact([local.namespace, local.name, local.env])))
 }
 
 locals {
@@ -17,11 +17,11 @@ locals {
   out_tags = merge(
     local.tags,
     {
-      Namespace   = local.namespace
-      Environment = local.env
-      Stage       = local.stage
-      Terraform   = true
-      id          = local.id
+      Namespace = local.namespace
+      Name      = local.name
+      Env       = local.env
+      Terraform = true
+      id        = local.id
     }
   )
 }
