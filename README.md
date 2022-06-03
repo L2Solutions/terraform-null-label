@@ -65,6 +65,8 @@ No modules.
 | <a name="output_labels_prefixed"></a> [labels\_prefixed](#output\_labels\_prefixed) | Labels with Prefix |
 | <a name="output_name"></a> [name](#output\_name) | Name |
 | <a name="output_project"></a> [project](#output\_project) | Project Name |
+| <a name="output_tags"></a> [tags](#output\_tags) | Tags |
+| <a name="output_tags_prefixed"></a> [tags\_prefixed](#output\_tags\_prefixed) | Tags with Prefix |
 | <a name="output_tenant"></a> [tenant](#output\_tenant) | Tenant Name |
 | <a name="output_ver"></a> [ver](#output\_ver) | Semantic Version |
 <!-- END_TF_DOCS -->
