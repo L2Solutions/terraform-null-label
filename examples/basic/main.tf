@@ -5,7 +5,7 @@ module "simple" {
   environment = "dev"
   project     = "prj"
 
-  config_tags = {
+  config_labels = {
     enable_empty = true
     prefix       = "pre"
   }
@@ -19,7 +19,7 @@ module "complex" {
   project     = "prj"
   name        = "hello-world"
   app         = "api"
-  semver      = "0.0.1"
+  ver         = "0.0.1"
   component   = "bucket"
   status      = "inactive"
 

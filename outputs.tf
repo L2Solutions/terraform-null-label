@@ -4,16 +4,27 @@ output "id" {
 }
 
 locals {
-  output_tags = {
-    for k, v in local.tags
-    : join(local.delimiter, compact([local.config_tags.prefix, k]))
-    => v if v != "" || local.config_tags.enable_empty
+  output_labels = {
+    for k, v in local.labels
+    : k => v if v != "" || local.config_labels.enable_empty
   }
 }
 
-output "tags" {
-  description = "Tags"
-  value       = local.output_tags
+output "labels" {
+  description = "Labels"
+  value       = local.output_labels
+}
+
+locals {
+  output_labels_prefixed = {
+    for k, v in local.output_labels
+    : join(local.delimiter, compact([local.config_labels.prefix, k])) => v
+  }
+}
+
+output "labels_prefixed" {
+  description = "Labels with Prefix"
+  value       = local.output_labels_prefixed
 }
 
 output "delimiter" {
@@ -51,7 +62,7 @@ output "component" {
   value       = local.component
 }
 
-output "semver" {
+output "ver" {
   description = "Semantic Version"
-  value       = local.semver
+  value       = local.ver
 }

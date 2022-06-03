@@ -4,7 +4,7 @@ locals {
   unique_id        = substr(local.unique_id_hash, 0, local.config_unique_id.length)
   unique_id_suffix = local.config_unique_id.enable ? local.unique_id : ""
 
-  semver_id = local.config_semver.enable_id ? replace(local.semver, ".", local.delimiter) : ""
+  ver_id = local.config_ver.enable_id ? replace(local.ver, ".", local.delimiter) : ""
 
   id_parts = compact([
     local.tenant,
@@ -12,15 +12,15 @@ locals {
     local.project,
     local.name,
     local.app,
-    local.semver_id,
+    local.ver_id,
     local.component,
     local.unique_id_suffix
   ])
 
   id = lower(join(local.delimiter, local.id_parts))
 
-  tags = merge(
-    local.var_tags,
+  labels = merge(
+    local.var_labels,
     {
       tenant      = local.tenant
       environment = local.environment
@@ -29,7 +29,7 @@ locals {
       app         = local.app
       component   = local.component
 
-      version = local.semver
+      version = local.ver
       status  = local.status
 
       instance = local.unique_id

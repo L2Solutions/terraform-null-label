@@ -8,9 +8,9 @@ locals {
   delimiter   = lower(var.delimiter)
 
   status = lower(var.status)
-  semver = lower(var.semver)
+  ver    = lower(var.ver)
 
-  var_tags = var.tags
+  var_labels = var.labels
 
   config_unique_id = defaults(var.config_unique_id, {
     enable        = true
@@ -18,11 +18,12 @@ locals {
     enable_suffix = false
   })
 
-  config_semver = defaults(var.config_semver, {
+  config_ver = defaults(var.config_ver, {
     enable_id = false
   })
 
-  config_tags = defaults(var.config_tags, {
+  config_labels = defaults(var.config_labels, {
     enable_empty = false
+    prefix       = "terraform"
   })
 }

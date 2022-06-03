@@ -99,19 +99,19 @@ variable "component" {
   }
 }
 
-variable "semver" {
+variable "ver" {
   description = "Version"
   type        = string
   default     = ""
 
   validation {
-    condition     = var.semver == "" || can(regex("^((([0-9]+)\\.([0-9]+)\\.([0-9]+)(?:-([0-9a-zA-Z-]+(?:\\.[0-9a-zA-Z-]+)*))?)(?:\\+([0-9a-zA-Z-]+(?:\\.[0-9a-zA-Z-]+)*))?)$", var.semver))
-    error_message = "Variable `semver` must be in semver format."
+    condition     = var.ver == "" || can(regex("^((([0-9]+)\\.([0-9]+)\\.([0-9]+)(?:-([0-9a-zA-Z-]+(?:\\.[0-9a-zA-Z-]+)*))?)(?:\\+([0-9a-zA-Z-]+(?:\\.[0-9a-zA-Z-]+)*))?)$", var.ver))
+    error_message = "Variable `ver` must be in ver format."
   }
 }
 
-variable "tags" {
-  type    = map(any)
+variable "labels" {
+  type    = map(string)
   default = {}
 }
 
@@ -137,7 +137,7 @@ variable "config_unique_id" {
   })
 }
 
-variable "config_semver" {
+variable "config_ver" {
   description = "Configure Semantic Versioning"
   default     = {}
 
@@ -146,8 +146,8 @@ variable "config_semver" {
   })
 }
 
-variable "config_tags" {
-  description = "Configure Tags Output"
+variable "config_labels" {
+  description = "Configure Labels Output"
   default     = {}
 
   type = object({
