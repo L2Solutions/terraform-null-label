@@ -2,22 +2,20 @@ provider "aws" {
   region = "us-east-2"
 }
 
-# Shortest possible.
-module "ts-dev-labels" {
+module "tenant" {
   source = "../../"
 
-  namespace = "ts"
-  env       = "dev"
+  tenant      = "tnt"
+  environment = "dev"
 }
 
-# Longest possible. _ delimiter
-module "testl-stage-stage-labels" {
+module "tenant2" {
   source = "../../"
 
-  namespace = "test"
-  name      = "lbls"
-  env       = "prod"
-  delimiter = "_"
+  tenant      = "tnt2"
+  environment = "prod"
+  project     = "prjct"
+  delimiter   = "_"
 }
 
 data "aws_iam_policy_document" "test-policy" {
@@ -31,12 +29,12 @@ data "aws_iam_policy_document" "test-policy" {
   }
 }
 
-resource "aws_iam_policy" "testl-stage-stage" {
-  name_prefix = module.ts-dev-labels.id
+resource "aws_iam_policy" "tenant" {
+  name_prefix = module.tenant.id
   policy      = data.aws_iam_policy_document.test-policy.json
 }
 
-resource "aws_iam_policy" "ts-dev" {
-  name_prefix = module.testl-stage-stage-labels.id
+resource "aws_iam_policy" "tenant2" {
+  name_prefix = module.tenant2.id
   policy      = data.aws_iam_policy_document.test-policy.json
 }

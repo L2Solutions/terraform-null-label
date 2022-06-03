@@ -1,27 +1,28 @@
 locals {
-  namespace = lower(var.namespace)
-  name      = lower(var.name)
-  env       = lower(var.env)
-  delimiter = lower(var.delimiter)
-  tags      = var.tags
-}
+  tenant      = lower(var.tenant)
+  environment = lower(var.environment)
+  project     = lower(var.project)
+  name        = lower(var.name)
+  app         = lower(var.app)
+  component   = lower(var.component)
+  delimiter   = lower(var.delimiter)
 
-locals {
-  id = lower(join(local.delimiter, compact([local.namespace, local.name, local.env])))
-}
+  status = lower(var.status)
+  semver = lower(var.semver)
 
-locals {
-  out_id        = local.id
-  out_delimiter = local.delimiter
+  var_tags = var.tags
 
-  out_tags = merge(
-    local.tags,
-    {
-      Namespace = local.namespace
-      Name      = local.name
-      Env       = local.env
-      Terraform = true
-      id        = local.id
-    }
-  )
+  config_unique_id = defaults(var.config_unique_id, {
+    enable        = true
+    length        = 8
+    enable_suffix = false
+  })
+
+  config_semver = defaults(var.config_semver, {
+    enable_id = false
+  })
+
+  config_tags = defaults(var.config_tags, {
+    enable_empty = false
+  })
 }
