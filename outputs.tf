@@ -15,6 +15,11 @@ output "labels" {
   value       = local.output_labels
 }
 
+output "tags" {
+  description = "Tags"
+  value       = local.output_labels
+}
+
 locals {
   output_labels_prefixed = {
     for k, v in local.output_labels
@@ -24,6 +29,11 @@ locals {
 
 output "labels_prefixed" {
   description = "Labels with Prefix"
+  value       = local.output_labels_prefixed
+}
+
+output "tags_prefixed" {
+  description = "Tags with Prefix"
   value       = local.output_labels_prefixed
 }
 
