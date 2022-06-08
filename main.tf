@@ -1,6 +1,5 @@
 locals {
   unique_id_hash = sha256(random_string.unique_id.id)
-  #unique_id_hash = "1234abcd"
 
   unique_id        = local.config_unique_id.enable ? substr(local.unique_id_hash, 0, local.config_unique_id.length) : ""
   unique_id_suffix = local.config_unique_id.enable_suffix ? local.unique_id : ""
