@@ -1,14 +1,6 @@
-# Terraform Null Labels Module
+# Terraform Null Label Extend Module
 
-## A strongly opinionated label module
-
-While this module is opinionated about naming conventions, you can use as many or as few of those names and properties as you like.
-
-The complete `id` output when all fields are present or enabled is in the format of:
-
-```
-[tenant]-[environment]-[project]-[name]-[app]-[semver]-[component]-[uniqid]
-```
+Extend an instance of the labels module. Pass in an existing instance or its `labels` output.
 
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
@@ -16,41 +8,29 @@ The complete `id` output when all fields are present or enabled is in the format
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.0.0 |
-| <a name="requirement_random"></a> [random](#requirement\_random) | 3.2.0 |
 
 ## Providers
 
-| Name | Version |
-|------|---------|
-| <a name="provider_random"></a> [random](#provider\_random) | 3.2.0 |
+No providers.
 
 ## Modules
 
-No modules.
+| Name | Source | Version |
+|------|--------|---------|
+| <a name="module_labels"></a> [labels](#module\_labels) | ../../ | n/a |
 
 ## Resources
 
-| Name | Type |
-|------|------|
-| [random_string.unique_id](https://registry.terraform.io/providers/hashicorp/random/3.2.0/docs/resources/string) | resource |
+No resources.
 
 ## Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_app"></a> [app](#input\_app) | Application Name | `string` | `""` | no |
-| <a name="input_component"></a> [component](#input\_component) | Component Name | `string` | `""` | no |
+| <a name="input_config"></a> [config](#input\_config) | Object containing label configuration, typically an instance of the base module | <pre>object({<br>    tenant      = optional(string)<br>    environment = optional(string)<br>    project     = optional(string)<br>    name        = optional(string)<br>    app         = optional(string)<br>    component   = optional(string)<br>    ver         = optional(string)<br><br>    delimiter = optional(string)<br><br>    labels = optional(map(string))<br>    status = optional(string)<br><br>    input_labels = optional(map(string))<br><br>    config_ver = optional(object({<br>      enable_id = optional(bool)<br>    }))<br><br>    config_labels = optional(object({<br>      enable_empty = optional(bool)<br>      prefix       = optional(string)<br>    }))<br>  })</pre> | n/a | yes |
 | <a name="input_config_labels"></a> [config\_labels](#input\_config\_labels) | Configure Labels Output | <pre>object({<br>    enable_empty = optional(bool)<br>    prefix       = optional(string)<br>  })</pre> | `{}` | no |
 | <a name="input_config_unique_id"></a> [config\_unique\_id](#input\_config\_unique\_id) | Configure Unique Identifier | <pre>object({<br>    enable        = optional(bool)<br>    length        = optional(number)<br>    enable_suffix = optional(bool)<br>  })</pre> | `{}` | no |
 | <a name="input_config_ver"></a> [config\_ver](#input\_config\_ver) | Configure Semantic Versioning | <pre>object({<br>    enable_id = optional(bool)<br>  })</pre> | `{}` | no |
-| <a name="input_delimiter"></a> [delimiter](#input\_delimiter) | ID Delimiter | `string` | `"-"` | no |
-| <a name="input_environment"></a> [environment](#input\_environment) | Environment Name | `string` | `""` | no |
-| <a name="input_labels"></a> [labels](#input\_labels) | n/a | `map(string)` | `{}` | no |
-| <a name="input_name"></a> [name](#input\_name) | Name(app group or deployment) | `string` | `""` | no |
-| <a name="input_project"></a> [project](#input\_project) | Project Name | `string` | `""` | no |
-| <a name="input_status"></a> [status](#input\_status) | Resource/Object Status | `string` | `"active"` | no |
-| <a name="input_tenant"></a> [tenant](#input\_tenant) | Tenant Name | `string` | n/a | yes |
-| <a name="input_ver"></a> [ver](#input\_ver) | Version | `string` | `""` | no |
 
 ## Outputs
 

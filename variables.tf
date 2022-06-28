@@ -118,7 +118,7 @@ variable "labels" {
 variable "status" {
   description = "Resource/Object Status"
   type        = string
-  default     = ""
+  default     = "active"
 
   validation {
     condition     = contains(["", "active", "inactive", "deprecated", "delete"], var.status)
@@ -131,7 +131,7 @@ variable "config_unique_id" {
   default     = {}
 
   type = object({
-    enable        = optional(bool),
+    enable        = optional(bool)
     length        = optional(number)
     enable_suffix = optional(bool)
   })

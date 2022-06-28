@@ -6,11 +6,11 @@ locals {
   app         = lower(var.app)
   component   = lower(var.component)
   delimiter   = lower(var.delimiter)
+  ver         = lower(var.ver)
 
   status = lower(var.status)
-  ver    = lower(var.ver)
 
-  var_labels = var.labels
+  input_labels = var.labels
 
   config_unique_id = defaults(var.config_unique_id, {
     enable        = true

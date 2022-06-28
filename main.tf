@@ -20,7 +20,7 @@ locals {
   id = lower(join(local.delimiter, local.id_parts))
 
   labels = merge(
-    local.var_labels,
+    local.input_labels,
     {
       tenant      = local.tenant
       environment = local.environment
