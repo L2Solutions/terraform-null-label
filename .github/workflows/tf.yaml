@@ -12,10 +12,17 @@ jobs:
         with:
           ref: ${{ github.event.pull_request.head.ref }}
 
-      - name: terraform-docs-gh-actions
+      - name: terraform-docs
         uses: terraform-docs/gh-actions@v1.0.0
         with:
           working-dir: .
+          output-file: README.md
+          output-method: inject
+
+      - name: terraform-docs-module-extend
+        uses: terraform-docs/gh-actions@v1.0.0
+        with:
+          working-dir: ./modules/extend
           output-file: README.md
           output-method: inject
           git-push: "true"
