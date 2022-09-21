@@ -131,9 +131,9 @@ variable "config_unique_id" {
   default     = {}
 
   type = object({
-    enable        = optional(bool)
-    length        = optional(number)
-    enable_suffix = optional(bool)
+    enable        = optional(bool, true)
+    length        = optional(number, 8)
+    enable_suffix = optional(bool, false)
   })
 }
 
@@ -142,7 +142,7 @@ variable "config_ver" {
   default     = {}
 
   type = object({
-    enable_id = optional(bool)
+    enable_id = optional(bool, false)
   })
 }
 
@@ -151,7 +151,7 @@ variable "config_labels" {
   default     = {}
 
   type = object({
-    enable_empty = optional(bool)
-    prefix       = optional(string)
+    enable_empty = optional(bool, false)
+    prefix       = optional(string, "terraform")
   })
 }
