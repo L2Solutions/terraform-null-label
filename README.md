@@ -15,7 +15,7 @@ The complete `id` output when all fields are present or enabled is in the format
 
 | Name | Version |
 |------|---------|
-| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.0.0 |
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.3.0, < 2.0.0 |
 | <a name="requirement_random"></a> [random](#requirement\_random) | 3.2.0 |
 
 ## Providers
@@ -40,9 +40,9 @@ No modules.
 |------|-------------|------|---------|:--------:|
 | <a name="input_app"></a> [app](#input\_app) | Application Name | `string` | `""` | no |
 | <a name="input_component"></a> [component](#input\_component) | Component Name | `string` | `""` | no |
-| <a name="input_config_labels"></a> [config\_labels](#input\_config\_labels) | Configure Labels Output | <pre>object({<br>    enable_empty = optional(bool)<br>    prefix       = optional(string)<br>  })</pre> | `{}` | no |
-| <a name="input_config_unique_id"></a> [config\_unique\_id](#input\_config\_unique\_id) | Configure Unique Identifier | <pre>object({<br>    enable        = optional(bool)<br>    length        = optional(number)<br>    enable_suffix = optional(bool)<br>  })</pre> | `{}` | no |
-| <a name="input_config_ver"></a> [config\_ver](#input\_config\_ver) | Configure Semantic Versioning | <pre>object({<br>    enable_id = optional(bool)<br>  })</pre> | `{}` | no |
+| <a name="input_config_labels"></a> [config\_labels](#input\_config\_labels) | Configure Labels Output | <pre>object({<br>    enable_empty = optional(bool, false)<br>    prefix       = optional(string, "terraform")<br>  })</pre> | `{}` | no |
+| <a name="input_config_unique_id"></a> [config\_unique\_id](#input\_config\_unique\_id) | Configure Unique Identifier | <pre>object({<br>    enable        = optional(bool, true)<br>    length        = optional(number, 8)<br>    enable_suffix = optional(bool, false)<br>  })</pre> | `{}` | no |
+| <a name="input_config_ver"></a> [config\_ver](#input\_config\_ver) | Configure Semantic Versioning | <pre>object({<br>    enable_id = optional(bool, false)<br>  })</pre> | `{}` | no |
 | <a name="input_delimiter"></a> [delimiter](#input\_delimiter) | ID Delimiter | `string` | `"-"` | no |
 | <a name="input_environment"></a> [environment](#input\_environment) | Environment Name | `string` | `""` | no |
 | <a name="input_labels"></a> [labels](#input\_labels) | n/a | `map(string)` | `{}` | no |
