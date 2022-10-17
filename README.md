@@ -16,7 +16,7 @@ The complete `id` output when all fields are present or enabled is in the format
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.3.0, < 2.0.0 |
-| <a name="requirement_random"></a> [random](#requirement\_random) | 3.2.0 |
+| <a name="requirement_random"></a> [random](#requirement\_random) | >=3.2.0 |
 
 ## Providers
 
@@ -32,7 +32,7 @@ No modules.
 
 | Name | Type |
 |------|------|
-| [random_string.unique_id](https://registry.terraform.io/providers/hashicorp/random/3.2.0/docs/resources/string) | resource |
+| [random_string.unique_id](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/string) | resource |
 
 ## Inputs
 
