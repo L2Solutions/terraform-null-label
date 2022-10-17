@@ -16,7 +16,7 @@ The complete `id` output when all fields are present or enabled is in the format
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.3.0, < 2.0.0 |
-| <a name="requirement_random"></a> [random](#requirement\_random) | >=3.2.0 |
+| <a name="requirement_random"></a> [random](#requirement\_random) | >=3.2.0, < 4.0.0 |
 
 ## Providers
 
